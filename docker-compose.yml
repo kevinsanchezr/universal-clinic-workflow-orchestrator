@@ -74,8 +74,10 @@ services:
       - "3000:3000"
     volumes:
       - ./frontend:/app/frontend
+      - frontend_node_modules:/app/frontend/node_modules
     depends_on:
       - backend
 
 volumes:
   postgres_data:
+  frontend_node_modules:

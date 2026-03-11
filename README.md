@@ -108,6 +108,13 @@ docker-compose.yml       Local stack
 
 If Docker reports permission errors on `/var/run/docker.sock`, your user session does not currently have access to the Docker daemon. On Ubuntu this usually means running Docker with `sudo` or adding your user to the `docker` group and restarting the session.
 
+If the frontend container reports `next: not found`, the cause is usually a bind mount hiding container-installed `node_modules`. This repository mounts a dedicated Docker volume at `/app/frontend/node_modules` to avoid that in development.
+
+Two runtime notes are expected in local dev:
+
+- Redis may warn about `vm.overcommit_memory = 1`; that is a host-level Linux setting, not an application bug.
+- Uvicorn logs may appear twice in the backend container because `--reload` starts a reloader process and an app process.
+
 ## Collaboration Workflow
 
 - Contribution guide: [CONTRIBUTING.md](/home/kevin/Projects/bottleneck%20companies/CONTRIBUTING.md)
