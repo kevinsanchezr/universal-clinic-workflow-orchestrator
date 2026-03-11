@@ -135,15 +135,15 @@ If Docker reports permission errors on `/var/run/docker.sock`, your user session
 
 ### Dashboard
 
-![Dashboard](Demo-Images/dashboard-overview.png)
+![Trace View](Demo-Images/trace-view.png)
 
 ### Trace View
 
-![Trace View](Demo-Images/trace-view.png)
+![Simulator / Operations View](Demo-Images/operations-simulator.png)
 
 ### Simulator / Operations View
 
-![Simulator / Operations View](Demo-Images/operations-simulator.png)
+![Dashboard](Demo-Images/dashboard-overview.png)
 
 ### Workflow Library
 
