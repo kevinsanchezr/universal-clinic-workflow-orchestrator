@@ -1,9 +1,10 @@
 from fastapi import APIRouter
 
-from backend.app.api import dashboard, handoffs, runs, seed, settings, simulators, templates
+from backend.app.api import clinics, dashboard, handoffs, runs, seed, settings, simulators, templates
 
 
 api_router = APIRouter()
+api_router.include_router(clinics.router, prefix="/clinics", tags=["clinics"])
 api_router.include_router(dashboard.router, prefix="/dashboard", tags=["dashboard"])
 api_router.include_router(runs.router, prefix="/runs", tags=["runs"])
 api_router.include_router(templates.router, prefix="/templates", tags=["templates"])

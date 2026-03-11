@@ -1,4 +1,5 @@
 import { api } from "@/lib/api";
+import { DemoLauncher } from "@/components/demo-launcher";
 import { MetricCard, Panel, StatusPill } from "@/components/ui";
 import { RunTable } from "@/components/run-table";
 
@@ -56,6 +57,19 @@ export default async function DashboardPage() {
             <p>This system is built around the operational bottleneck: safe execution inside messy clinic software.</p>
             <p>The strongest demo is cancellation recovery in a legacy EHR because it combines real revenue recovery with brittle UI automation risk.</p>
             <p>The point is not that an LLM can talk. The point is that clinic AI can execute, recover, escalate, and stay auditable.</p>
+          </div>
+        </Panel>
+      </section>
+
+      <section className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
+        <Panel eyebrow="Run The Demo" title="Launch Cancellation Recovery from the dashboard">
+          <DemoLauncher />
+        </Panel>
+        <Panel eyebrow="Business Outcome" title="Why this flow sells">
+          <div className="space-y-3 text-sm text-muted">
+            <p>Same-day cancellations create direct revenue leakage and force staff into time-sensitive manual recovery work.</p>
+            <p>This launch path demonstrates the exact reliability problem: execute safely in a legacy EHR, preserve auditability, and escalate cleanly if confidence drops.</p>
+            <p>The successful end state is operational and financial: the slot is recovered, the trace is reviewable, and no raw PHI is written into logs.</p>
           </div>
         </Panel>
       </section>

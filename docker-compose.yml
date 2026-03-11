@@ -70,12 +70,15 @@ services:
       dockerfile: frontend/Dockerfile
     environment:
       NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-http://localhost:8000/api}
+      API_INTERNAL_BASE_URL: ${API_INTERNAL_BASE_URL:-http://backend:8000/api}
     ports:
       - "3000:3000"
     volumes:
       - ./frontend:/app/frontend
+      - frontend_node_modules:/app/frontend/node_modules
     depends_on:
       - backend
 
 volumes:
   postgres_data:
+  frontend_node_modules:

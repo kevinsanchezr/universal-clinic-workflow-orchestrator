@@ -32,6 +32,39 @@ export type DashboardData = {
   simulators: Array<{ clinic_name: string; ehr_style: string }>;
 };
 
+export type ClinicRecord = {
+  id: string;
+  name: string;
+  segment: string;
+  timezone: string;
+  ehr_adapter: {
+    id: string;
+    name: string;
+    vendor: string;
+    ehr_style: string;
+  };
+  users: Array<{
+    id: string;
+    full_name: string;
+    role: string;
+    email: string;
+  }>;
+};
+
+export type LaunchWorkflowRequest = {
+  clinic_id: string;
+  template_slug: string;
+  requested_by_user_id?: string | null;
+  ehr_style: "modern" | "legacy";
+  payload: Record<string, unknown>;
+};
+
+export type LaunchWorkflowResponse = {
+  run_id: string;
+  status: string;
+  outcome: string | null;
+};
+
 export type RunDetail = {
   id: string;
   status: string;

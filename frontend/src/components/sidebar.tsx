@@ -1,12 +1,13 @@
 import Link from "next/link";
+import type { Route } from "next";
 
-const nav = [
-  ["Dashboard", "/"],
-  ["Workflows", "/workflows"],
-  ["Task Trace", "/tasks"],
-  ["Handoff Queue", "/handoffs"],
-  ["EHR Simulator", "/simulator"],
-  ["Settings", "/settings"],
+const nav: Array<{ label: string; href: Route }> = [
+  { label: "Dashboard", href: "/" },
+  { label: "Workflows", href: "/workflows" },
+  { label: "Task Trace", href: "/tasks" },
+  { label: "Handoff Queue", href: "/handoffs" },
+  { label: "EHR Simulator", href: "/simulator" },
+  { label: "Settings", href: "/settings" },
 ];
 
 export function Sidebar() {
@@ -18,7 +19,7 @@ export function Sidebar() {
           <h1 className="mt-2 text-xl font-semibold">Universal Workflow Orchestrator</h1>
         </div>
         <nav className="mt-8 space-y-2">
-          {nav.map(([label, href]) => (
+          {nav.map(({ label, href }) => (
             <Link key={href} href={href} className="block rounded-2xl px-4 py-3 text-sm text-muted transition hover:bg-bg hover:text-ink">
               {label}
             </Link>

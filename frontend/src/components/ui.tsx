@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -48,4 +48,28 @@ export function StatusPill({ label, tone }: { label: string; tone?: "success" | 
     neutral: "bg-slate-200 text-slate-700",
   };
   return <span className={cn("rounded-full px-3 py-1 text-xs font-semibold capitalize", toneClasses[tone ?? "neutral"])}>{label}</span>;
+}
+
+export function Button({
+  children,
+  className,
+  variant = "primary",
+  ...props
+}: ButtonHTMLAttributes<HTMLButtonElement> & { variant?: "primary" | "secondary" }) {
+  const variants = {
+    primary: "bg-ink text-white hover:bg-slate-800",
+    secondary: "bg-bg text-ink hover:bg-slate-200",
+  };
+  return (
+    <button
+      className={cn(
+        "inline-flex items-center justify-center rounded-2xl px-4 py-3 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-60",
+        variants[variant],
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </button>
+  );
 }
