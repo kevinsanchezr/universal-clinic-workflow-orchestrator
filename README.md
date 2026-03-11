@@ -131,9 +131,31 @@ If Docker reports permission errors on `/var/run/docker.sock`, your user session
 3. Open the dashboard and trace view
 4. Show the step-by-step adapter trace, confidence, fallback logic, and recovered business value
 
-## Screenshots
+## Demo Images
 
-Placeholder screenshots can be added under `docs/screenshots/` after running the app locally.
+### Dashboard
+
+![Dashboard](Demo-Images/dashboard-overview.png)
+
+### Trace View
+
+![Trace View](Demo-Images/trace-view.png)
+
+### Simulator / Operations View
+
+![Simulator / Operations View](Demo-Images/operations-simulator.png)
+
+### Workflow Library
+
+![Workflow Library](Demo-Images/workflow-library.png)
+
+### Handoff Queue
+
+![Handoff Queue](Demo-Images/handoff-queue.png)
+
+### Settings / RBAC
+
+![Settings / RBAC](Demo-Images/settings-rbac.png)
 
 ## Future Work
 
