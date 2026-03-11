@@ -1,6 +1,16 @@
 # Operational Reliability Layer for AI Employees in Clinics
 
-Open-code MVP for the missing infrastructure layer that makes AI employees deployable inside real clinics: reliable workflow execution across messy EHRs, human fallback, redacted auditability, and minimal PHI persistence.
+AI clinic assistants are easy to demo but hard to deploy.
+
+The real challenge is not answering patient calls.
+It is executing operational workflows reliably inside fragmented EHR systems.
+
+Legacy interfaces, inconsistent data entry, UI drift, and strict PHI constraints
+make most clinic automation fragile.
+
+This project explores the missing infrastructure layer behind AI employees in healthcare:
+a reliability runtime that allows automation to execute, observe, and recover
+clinic workflows safely inside real EHR environments.
 
 ## Product Thesis
 
