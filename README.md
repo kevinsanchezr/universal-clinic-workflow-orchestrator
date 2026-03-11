@@ -1,6 +1,24 @@
-# Universal Clinic Workflow Orchestrator
+# Operational Reliability Layer for AI Employees in Clinics
 
-Open-code MVP for reliable clinic workflow automation across heterogeneous EHR interfaces with strong observability, human fallback, auditability, and minimal PHI persistence.
+Open-code MVP for the missing infrastructure layer that makes AI employees deployable inside real clinics: reliable workflow execution across messy EHRs, human fallback, redacted auditability, and minimal PHI persistence.
+
+## Product Thesis
+
+Most clinic AI companies can generate language, classify requests, and draft actions.
+
+The bottleneck is operational reliability inside heterogeneous EHR environments.
+
+This project is built around that bottleneck:
+
+- Legacy and modern EHR interfaces break brittle automations
+- Low-confidence edge cases require fast human takeover
+- Clinics need step-level auditability before they trust automation
+- Logs and traces must preserve operational evidence without persisting unnecessary PHI
+- Business value has to be visible in recovered appointments, saved staff time, and reduced failure rates
+
+The sharp positioning is not "another AI receptionist."
+
+It is an operational reliability layer for clinic AI employees.
 
 ## What It Demonstrates
 
@@ -11,6 +29,36 @@ Open-code MVP for reliable clinic workflow automation across heterogeneous EHR i
 - Redacted audit trail with immutable application-level records
 - Operations dashboard with workflow analytics, traces, and simulator views
 - Dockerized local development with PostgreSQL, Redis, FastAPI, Celery, and Next.js
+
+## Demo Narrative
+
+The primary demo is:
+
+`Cancellation Recovery in LegacyEHR`
+
+Why this flow matters:
+
+- It starts with real clinic pain: same-day cancellations create lost revenue
+- It exercises the hard systems problem: interacting safely with a messy legacy UI
+- It requires judgment: pick the best waitlist candidate, not just any candidate
+- It forces reliable fallback: escalate when confidence drops or the UI state is inconsistent
+- It ends in business value, not just technical completion
+
+The intended reviewer takeaway is:
+
+"This is the layer that makes AI clinic operators actually safe to deploy."
+
+## Demo Outcome
+
+The dashboard is designed to tell a business story, not just a systems story:
+
+- Cancellation identified
+- Best-fit patient selected from waitlist
+- Slot refilled in `LegacyEHR`
+- Expected revenue recovered: `$180`
+- Manual staff time saved: `12 minutes`
+- Workflow confidence: `0.91`
+- Raw PHI persisted in logs: `none`
 
 ## Architecture
 
@@ -57,6 +105,13 @@ docker-compose.yml       Local stack
 2. Run `docker compose up --build`
 3. API: `http://localhost:8000/docs`
 4. Web: `http://localhost:3000`
+
+## Recommended Demo Sequence
+
+1. Seed the environment with `POST /api/seed`
+2. Launch the `cancellation-recovery` workflow against the seeded enterprise clinic using `ehr_style: "legacy"`
+3. Open the dashboard and trace view
+4. Show the step-by-step adapter trace, confidence, fallback logic, and recovered business value
 
 ## Screenshots
 

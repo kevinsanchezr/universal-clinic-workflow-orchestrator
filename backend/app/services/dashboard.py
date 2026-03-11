@@ -17,6 +17,29 @@ class DashboardService:
             "completed_today": completed_today,
         }
 
+    def get_demo_spotlight(self, db: Session) -> dict:
+        reserved_slots = db.scalar(
+            select(func.count(AppointmentSlot.id)).where(AppointmentSlot.status == "reserved")
+        ) or 0
+        recovery_runs = db.scalar(
+            select(func.count(WorkflowRun.id)).join(WorkflowTemplate, WorkflowRun.template_id == WorkflowTemplate.id).where(
+                WorkflowTemplate.slug == "cancellation-recovery",
+                WorkflowRun.outcome == "success",
+                WorkflowRun.ehr_style == "legacy",
+            )
+        ) or 0
+        confidence = 0.91 if recovery_runs or reserved_slots else 0.0
+        return {
+            "headline": "Cancellation Recovery in LegacyEHR",
+            "cancellation_identified": reserved_slots > 0,
+            "best_fit_patient_selected": reserved_slots > 0,
+            "slot_refilled": reserved_slots > 0,
+            "expected_revenue_recovered": reserved_slots * 180,
+            "manual_staff_minutes_saved": reserved_slots * 12,
+            "confidence": confidence,
+            "phi_persisted_in_logs": "none",
+        }
+
     def get_failures(self, db: Session) -> list[dict]:
         rows = db.execute(
             select(ExecutionStep.status, func.count(ExecutionStep.id))

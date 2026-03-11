@@ -24,6 +24,7 @@ def get_dashboard(db: Session = Depends(get_db)) -> DashboardResponse:
     handoff_queue = db.execute(select(HandoffItem).order_by(desc(HandoffItem.created_at)).limit(10)).scalars().all()
     return DashboardResponse(
         metrics=service.get_overview(db),
+        demo_spotlight=service.get_demo_spotlight(db),
         active_runs=[
             {
                 "id": run.id,

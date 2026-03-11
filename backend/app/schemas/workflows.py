@@ -50,6 +50,7 @@ class WorkflowRunDetail(BaseModel):
 
 class DashboardResponse(BaseModel):
     metrics: dict
+    demo_spotlight: dict
     active_runs: list[WorkflowRunSummary]
     failures_by_reason: list[dict]
     handoff_queue: list[dict]

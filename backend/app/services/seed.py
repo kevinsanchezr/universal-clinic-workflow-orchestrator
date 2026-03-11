@@ -120,6 +120,16 @@ def seed_demo_data(db: Session) -> dict:
         AppointmentSlot(
             clinic_id=clinics[2].id,
             patient_id=patients[3].id,
+            start_at="2026-03-11T16:00:00Z",
+            provider_name="Dr. Ortiz",
+            specialty="Cardiology",
+            visit_type="Follow-up",
+            status="cancelled",
+            is_confirmed=False,
+        ),
+        AppointmentSlot(
+            clinic_id=clinics[2].id,
+            patient_id=patients[3].id,
             start_at="2026-03-12T10:00:00Z",
             provider_name="Dr. Ortiz",
             specialty="Cardiology",

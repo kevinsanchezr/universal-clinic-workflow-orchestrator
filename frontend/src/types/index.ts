@@ -1,5 +1,15 @@
 export type DashboardData = {
   metrics: Record<string, number>;
+  demo_spotlight: {
+    headline: string;
+    cancellation_identified: boolean;
+    best_fit_patient_selected: boolean;
+    slot_refilled: boolean;
+    expected_revenue_recovered: number;
+    manual_staff_minutes_saved: number;
+    confidence: number;
+    phi_persisted_in_logs: string;
+  };
   active_runs: Array<{
     id: string;
     template_name: string;
