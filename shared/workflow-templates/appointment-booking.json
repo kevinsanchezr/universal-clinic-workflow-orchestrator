@@ -1,0 +1,31 @@
+{
+  "name": "Appointment Booking",
+  "slug": "appointment-booking",
+  "version": "1.0.0",
+  "description": "Intake structured appointment request and book the best available slot.",
+  "steps": [
+    {
+      "key": "classify_visit",
+      "action_type": "classify_visit",
+      "screen": "intake",
+      "expected_result": "visit_type_resolved",
+      "required_fields": ["appointment_type", "preferred_date"]
+    },
+    {
+      "key": "check_availability",
+      "action_type": "search_slots",
+      "screen": "schedule_search",
+      "field": "appointment_type",
+      "expected_result": "slot_candidate_found",
+      "required_fields": ["appointment_type"]
+    },
+    {
+      "key": "schedule_appointment",
+      "action_type": "schedule_slot",
+      "screen": "booking",
+      "action_name": "confirm-booking",
+      "expected_result": "appointment_booked",
+      "required_fields": ["first_name", "callback_number"]
+    }
+  ]
+}

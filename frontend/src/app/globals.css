@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-bg text-ink font-sans;
+  background-image:
+    radial-gradient(circle at top left, rgba(15, 118, 110, 0.08), transparent 24rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(244, 246, 248, 1));
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #9fb3c8 transparent;
+}

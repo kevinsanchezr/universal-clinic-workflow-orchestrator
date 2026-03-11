@@ -1,0 +1,26 @@
+{
+  "name": "Prescription Refill Intake",
+  "slug": "prescription-refill-intake",
+  "version": "1.0.0",
+  "description": "Validate refill intake and route to pharmacy confirmation with escalation on ambiguity.",
+  "steps": [
+    {
+      "key": "validate_request",
+      "action_type": "validate_refill",
+      "screen": "refill_inbox",
+      "expected_result": "request_validated",
+      "required_fields": ["first_name", "medication_name", "callback_number"]
+    },
+    {
+      "key": "route_refill_request",
+      "action_type": "route_refill",
+      "screen": "refill_queue",
+      "action_name": "route-to-pharmacy",
+      "expected_result": "queued",
+      "required_fields": ["medication_name", "urgency"],
+      "ambiguity_check": true,
+      "handoff_on_low_confidence": true,
+      "handoff_priority": "high"
+    }
+  ]
+}

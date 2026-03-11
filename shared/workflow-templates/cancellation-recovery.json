@@ -1,0 +1,31 @@
+{
+  "name": "Cancellation Recovery",
+  "slug": "cancellation-recovery",
+  "version": "1.0.0",
+  "description": "Recover same-day cancellations by matching waitlist candidates and reserving the slot.",
+  "steps": [
+    {
+      "key": "identify_cancellation",
+      "action_type": "scan_schedule",
+      "screen": "schedule_board",
+      "expected_result": "cancellation_found",
+      "required_fields": ["appointment_type"]
+    },
+    {
+      "key": "search_waitlist",
+      "action_type": "query_waitlist",
+      "screen": "waitlist",
+      "field": "appointment_type",
+      "expected_result": "candidate_ranked",
+      "required_fields": ["appointment_type", "preferred_date"]
+    },
+    {
+      "key": "reserve_slot",
+      "action_type": "reserve_slot",
+      "screen": "schedule_board",
+      "action_name": "reserve-slot",
+      "expected_result": "slot_reserved",
+      "required_fields": ["callback_number"]
+    }
+  ]
+}

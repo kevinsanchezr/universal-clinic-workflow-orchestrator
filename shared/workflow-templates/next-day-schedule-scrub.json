@@ -1,0 +1,30 @@
+{
+  "name": "Next-Day Schedule Scrub",
+  "slug": "next-day-schedule-scrub",
+  "version": "1.0.0",
+  "description": "Review next-day appointments for missing insurance and low confirmation risk.",
+  "steps": [
+    {
+      "key": "inspect_tomorrow_schedule",
+      "action_type": "inspect_schedule",
+      "screen": "schedule_board",
+      "expected_result": "schedule_loaded",
+      "required_fields": ["preferred_date"]
+    },
+    {
+      "key": "flag_risks",
+      "action_type": "risk_categorization",
+      "screen": "schedule_board",
+      "expected_result": "risk_flags_applied",
+      "required_fields": ["preferred_date"]
+    },
+    {
+      "key": "generate_call_tasks",
+      "action_type": "create_call_tasks",
+      "screen": "task_queue",
+      "action_name": "create-outreach-tasks",
+      "expected_result": "tasks_created",
+      "required_fields": ["preferred_date"]
+    }
+  ]
+}
