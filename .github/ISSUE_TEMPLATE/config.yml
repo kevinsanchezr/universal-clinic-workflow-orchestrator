@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Contribution Guide
+    url: https://github.com/kevinsanchezr/universal-clinic-workflow-orchestrator/blob/main/CONTRIBUTING.md
+    about: Review the repository workflow and contribution rules before opening work.

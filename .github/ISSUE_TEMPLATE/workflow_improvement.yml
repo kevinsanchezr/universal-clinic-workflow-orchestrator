@@ -1,0 +1,34 @@
+name: Workflow Improvement
+description: Propose a change to a workflow template, policy, adapter, or escalation path.
+title: "[Workflow]: "
+labels:
+  - area/workflows
+body:
+  - type: input
+    id: workflow
+    attributes:
+      label: Workflow
+      placeholder: cancellation-recovery
+    validations:
+      required: true
+  - type: textarea
+    id: current_state
+    attributes:
+      label: Current Behavior
+      description: What does the workflow do today?
+    validations:
+      required: true
+  - type: textarea
+    id: desired_state
+    attributes:
+      label: Desired Behavior
+      description: What should change?
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: List the concrete checks that will prove the improvement is done.
+    validations:
+      required: true

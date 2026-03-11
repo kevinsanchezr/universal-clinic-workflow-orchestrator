@@ -1,0 +1,43 @@
+name: Bug Report
+description: Report a defect, regression, or reliability issue.
+title: "[Bug]: "
+labels:
+  - kind/bug
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What broke, and what was the expected behavior?
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Operational Impact
+      description: Describe workflow, clinic operations, auditability, or PHI impact.
+      placeholder: "Example: cancellation recovery run failed before reserving slot, causing revenue leakage."
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction Steps
+      description: Provide a deterministic path to reproduce the issue.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or Trace Notes
+      description: Paste redacted logs, run IDs, or trace observations.
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - p0
+        - p1
+        - p2
+    validations:
+      required: true

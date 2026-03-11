@@ -1,0 +1,33 @@
+name: Feature Request
+description: Propose a new product or engineering capability.
+title: "[Feature]: "
+labels:
+  - kind/feature
+body:
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired Outcome
+      description: What outcome should exist when this work is done?
+    validations:
+      required: true
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Why It Matters
+      description: Tie this to clinic ops, reliability, observability, or business value.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Proposed Scope
+      description: Keep scope concrete and implementation-ready.
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: Constraints
+      options:
+        - label: Must preserve low-PHI persistence
+        - label: Must preserve adapter abstraction boundaries
+        - label: Must preserve auditability

@@ -106,6 +106,14 @@ docker-compose.yml       Local stack
 3. API: `http://localhost:8000/docs`
 4. Web: `http://localhost:3000`
 
+If Docker reports permission errors on `/var/run/docker.sock`, your user session does not currently have access to the Docker daemon. On Ubuntu this usually means running Docker with `sudo` or adding your user to the `docker` group and restarting the session.
+
+## Collaboration Workflow
+
+- Contribution guide: [CONTRIBUTING.md](/home/kevin/Projects/bottleneck%20companies/CONTRIBUTING.md)
+- Engineering workflow: [engineering-workflow.md](/home/kevin/Projects/bottleneck%20companies/docs/engineering-workflow.md)
+- GitHub issue templates and PR template live in `.github/`
+
 ## Recommended Demo Sequence
 
 1. Seed the environment with `POST /api/seed`
