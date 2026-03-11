@@ -110,6 +110,8 @@ If Docker reports permission errors on `/var/run/docker.sock`, your user session
 
 If the frontend container reports `next: not found`, the cause is usually a bind mount hiding container-installed `node_modules`. This repository mounts a dedicated Docker volume at `/app/frontend/node_modules` to avoid that in development.
 
+Next.js server-side fetches use `API_INTERNAL_BASE_URL` inside Docker and `NEXT_PUBLIC_API_BASE_URL` in the browser. By default those resolve to `http://backend:8000/api` internally and `http://localhost:8000/api` externally.
+
 Two runtime notes are expected in local dev:
 
 - Redis may warn about `vm.overcommit_memory = 1`; that is a host-level Linux setting, not an application bug.

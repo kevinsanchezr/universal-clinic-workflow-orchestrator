@@ -1,9 +1,14 @@
 import { ClinicRecord, DashboardData, LaunchWorkflowRequest, LaunchWorkflowResponse, RunDetail } from "@/types";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000/api";
+function getApiBase() {
+  if (typeof window === "undefined") {
+    return process.env.API_INTERNAL_BASE_URL ?? process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://backend:8000/api";
+  }
+  return process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000/api";
+}
 
 async function getJson<T>(path: string): Promise<T> {
-  const response = await fetch(`${API_BASE}${path}`, { cache: "no-store" });
+  const response = await fetch(`${getApiBase()}${path}`, { cache: "no-store" });
   if (!response.ok) {
     throw new Error(`API request failed: ${path}`);
   }
@@ -11,7 +16,7 @@ async function getJson<T>(path: string): Promise<T> {
 }
 
 async function postJson<T>(path: string, body?: unknown): Promise<T> {
-  const response = await fetch(`${API_BASE}${path}`, {
+  const response = await fetch(`${getApiBase()}${path}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: body ? JSON.stringify(body) : undefined,
